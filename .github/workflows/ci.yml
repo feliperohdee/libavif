@@ -6,8 +6,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
-
+        #os: [ubuntu-latest, macos-latest]
+        os: [self-hosted]
     steps:
     - uses: actions/checkout@v2
     - name: Set GCC & G++ 10 compiler (on Linux)
