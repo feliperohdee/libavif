@@ -32,7 +32,7 @@ for abi in ${ABI_LIST}; do
     -DLIBGAV1_ANDROID_NDK_PATH=${1} \
     -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 \
     -DANDROID_ABI=${abi}
-  ninja-build
+  ninja
   cd ..
 done
 

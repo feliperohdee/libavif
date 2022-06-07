@@ -17,5 +17,5 @@ mkdir build
 cd build
 
 cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 ..
-ninja-build
+ninja
 cd ../..

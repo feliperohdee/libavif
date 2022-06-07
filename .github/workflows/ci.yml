@@ -35,25 +35,31 @@ jobs:
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
       run: bash zlibpng.cmd
+    
     - name: Build aom
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
       run: bash aom.cmd
+    
     - name: Build dav1d
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
       run: bash dav1d.cmd
+    
     - name: Build rav1e
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
       run: bash rav1e.cmd
+    
     - name: Build SVT-AV1
       working-directory: ./ext
       run: bash svt.cmd
+    
     - name: Build libgav1
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
       run: bash libgav1.cmd
+    
     - name: Build libyuv
       if: steps.cache-ext.outputs.cache-hit != 'true'
       working-directory: ./ext
