@@ -71,8 +71,7 @@ jobs:
     - name: Prepare libavif (cmake)
       run: |
         mkdir build && cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_SVT=ON -DAVIF_LOCAL_SVT=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_APPS=ON -DAVIF_LOCAL_ZLIBPNG=ON -DAVIF_LOCAL_JPEG=ON
-        # cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON -DAVIF_CODEC_SVT=ON -DAVIF_LOCAL_SVT=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_EXAMPLES=ON -DAVIF_BUILD_APPS=ON -DAVIF_BUILD_TESTS=ON -DAVIF_LOCAL_ZLIBPNG=ON -DAVIF_LOCAL_JPEG=ON
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON -DAVIF_CODEC_SVT=ON -DAVIF_LOCAL_SVT=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_EXAMPLES=ON -DAVIF_BUILD_APPS=ON -DAVIF_BUILD_TESTS=ON -DAVIF_LOCAL_ZLIBPNG=ON -DAVIF_LOCAL_JPEG=ON
 
     - name: Build libavif (make)
       working-directory: ./build
@@ -82,6 +81,7 @@ jobs:
       if: runner.os == 'Linux'
       working-directory: ./build
       run: ./tests/aviftest ../tests/data
+    
     - uses: shallwefootball/s3-upload-action@master
       name: upload
       with:
@@ -89,4 +89,4 @@ jobs:
         aws_key_id: ${{ secrets.AWS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         destination_dir: libavif-${{ runner.os }}
-        source_dir: 'build'
+        source_dir: '.'
